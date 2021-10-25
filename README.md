@@ -12,7 +12,7 @@ This repository is created with purpose of finding suitable solution for Scala 3
 
 ### Output version
 
-We propose that compiler should accept flag `--output-version` that accepts scala version as an argument. Specified output version needs to be lower or equal to the used version of the compiler. The default value for this flag is its maximal value - the version of the compiler itself.
+We propose that compiler should accept flag `--scala-target` that accepts scala version as an argument. Specified output version needs to be lower or equal to the used version of the compiler. The default value for this flag is its maximal value - the version of the compiler itself.
 
 Specifying output version makes sure that tasty files produced during compilation would have a version matching output version. It also makes sure that no symbol is used that was added to the language api in any version newer that specified output version. If the code is using any language feature that was added in version newer that output version, the compilation error should be rised.
 
@@ -21,7 +21,7 @@ Specifying output version makes sure that tasty files produced during compilatio
 There should be a possibility to mark any file in project to be using higher output version than what is specified in the project configuration. It can be implemented by top level import, such as:
 
 ```scala
-import language.output.`3.1`
+import language.target.`3.1`
 ```
 
 This should override other menas of specifying output version.
